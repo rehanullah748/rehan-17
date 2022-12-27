@@ -1,8 +1,9 @@
 const ShopReducer = (state, action) => {
-  if (action.type === "CHANGE_LOADER") {
-    return { ...state, loader: !state.loader };
-  } else if (action.type === "PRODUCTS") {
-    return { ...state, products: action.payload };
+  const { type, payload } = action;
+  if (type === "CLOSE_LOADER") {
+    return { ...state, loader: payload };
+  } else if (type === "PRODUCTS") {
+    return { ...state, products: payload };
   } else {
     return state;
   }

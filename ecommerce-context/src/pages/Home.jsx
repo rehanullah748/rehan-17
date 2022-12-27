@@ -1,19 +1,23 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
+import axios from "axios"
 import { ShopContext } from "../store/ShopStore"
 const Home = () => {
   const {state, dispatch} = useContext(ShopContext)
-  console.log(state)
-  const update = () => {
-     dispatch({type: 'CHANGE_LOADER', payload: 'any value'});
+  const fetchProducts = () => {
+       axios.get('https://fakestoreapi.com/products').then(({data}) => {
+        dispatch({type: 'CLOSE_LOADER', payload: false});
+        dispatch({type: 'PRODUCTS', payload: data})
+       }).catch(err => {
+        dispatch({type: 'CLOSE_LOADER', payload: false});
+       })
   }
-  const changeProducts = () => {
-    dispatch({type: 'PRODUCTS', payload: ['item1', 'item2', 'item3']});
-  }
+ useEffect(() => {
+    fetchProducts();
+ }, [])
+ console.log(state)
   return (
     <div>
-      <button onClick={update}>loader</button>
-      <br />
-      <button onClick={changeProducts}>change products array</button>
+     all products
     </div>
   )
 }
