@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useContext } from "react";
 import ShopReducer from "./reducers/ShopReducer";
 export const ShopContext = createContext();
 
@@ -12,3 +12,4 @@ const ShopStoreProvider = ({children}) => {
     )
 }
 export default ShopStoreProvider
+export const useShopContext = () => useContext(ShopContext);
