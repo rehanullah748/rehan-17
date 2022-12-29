@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NextUIProvider } from '@nextui-org/react';
-import Home from "./pages/Home";
+import {Home} from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar"
 import ShopStoreProvider from "./store/ShopStore";
